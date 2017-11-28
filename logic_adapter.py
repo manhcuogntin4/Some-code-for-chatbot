@@ -1,7 +1,9 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 
-chatterbot = ChatBot("Training Example", read_only=True)
+chatterbot = ChatBot("Training Example",  logic_adapters=[
+        "chatterbot.logic.BestMatch"])
+
 chatterbot.set_trainer(ChatterBotCorpusTrainer)
 
 chatterbot.train(
@@ -13,5 +15,3 @@ print(response)
 
 response = chatterbot.get_response("Chào bac sy")
 print(response)
-
-
